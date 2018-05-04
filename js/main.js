@@ -144,7 +144,7 @@ createRestaurantHTML = (restaurant) => {
   image.alt = 'An image of the Restaurant ' + restaurant.name;
   li.append(image);
 
-  const name = document.createElement('h1');
+  const name = document.createElement('h2');
   name.innerHTML = restaurant.name;
   name.setAttribute('aria-label','Restaurant Name');
   li.append(name);
