@@ -19,7 +19,7 @@
   For Python 3.x, you can use python3 -m http.server 3000
 - Run `http://localhost:3000/` to launch the website.
 
-** Note : We can change the port by changing port in dbhelper.js(line 11) **
+*Note : We can change the port by changing `port` in dbhelper.js(line 11)*
 
 ## Technologies Used 
 - HTML5
