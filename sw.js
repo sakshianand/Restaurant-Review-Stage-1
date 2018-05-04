@@ -1,4 +1,5 @@
 var CacheName = 'project-cache-v1';
+//This function is for fetching the files from the Internet/Cache 
 self.addEventListener('fetch',function(event){
 	event.respondWith(
 		caches.match(event.request).then(function(response) {
@@ -7,6 +8,7 @@ self.addEventListener('fetch',function(event){
 		})
 		);
 });
+//This event will cache the visited webpages when the website is loaded for the first time
 self.addEventListener('install', function(event){
 	event.waitUntil(
 		caches.open(CacheName).then(function(cache){
@@ -31,6 +33,7 @@ self.addEventListener('install', function(event){
 		})
 		);
 });
+//This event will update the new cache when any changes are there in the webite.
 self.addEventListener('activate',function(e) {
      console.log('Service worker activated');
      e.waitUntil(
