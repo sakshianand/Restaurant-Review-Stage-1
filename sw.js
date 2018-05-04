@@ -1,19 +1,24 @@
 var CacheName = 'project-cache-v1';
 //This function is for fetching the files from the Internet/Cache 
-self.addEventListener('fetch',function(event){
-	event.respondWith(
-		caches.match(event.request).then(function(response) {
+self.addEventListener('fetch',function(e){
+     if (e.request.cache === 'only-if-cached' && e.request.mode !== 'same-origin') {
+           return;
+     }
+	e.respondWith(
+		caches.match(e.request).then(function(response) {
 			if(response) return response;
-			return fetch(event.request);
+			return fetch(e.request);
 		})
 		);
 });
 //This event will cache the visited webpages when the website is loaded for the first time
-self.addEventListener('install', function(event){
-	event.waitUntil(
-		caches.open(CacheName).then(function(cache){
+self.addEventListener('install', function(e){
+	e.waitUntil(
+		caches.open(CacheName).then(function(cache) {
 			return cache.addAll([
 		'/',
+          '/index.html',
+          '/restaurant.html',
  		'/js/dbhelper.js',
           '/js/restaurant_info.js',
           '/js/main.js',
