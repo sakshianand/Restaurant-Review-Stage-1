@@ -8,6 +8,7 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#filter-options">Skip to main Content</a>
   <header>
     <nav>
       <h1><a href="/">Restaurant Reviews</a></h1>
@@ -15,11 +16,11 @@
   </header>
 
   <main id="maincontent">
-    <section id="map-container">
+    <section id="map-container" aria-label="google map">
       <div id="map"></div>
     </section>
     <section>
-      <div class="filter-options">
+      <div class="filter-options" id="filter-options">
         <h2>Filter Results</h2>
         <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
           <option value="all">All Neighborhoods</option>
@@ -35,7 +36,13 @@
   <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
   <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJNkpHYXSUx4bwoWN1Pj_U9A7DQNWARTI&libraries=places&callback=initMap"></script>
-
+  <script type="text/javascript">
+    navigator.serviceWorker.register('/sw.js').then(function() {
+      console.log('Service Worker Registered');
+    }).catch(function() {
+      console.log('Failed');
+    })
+  </script>
 
   <footer id="footer">
     Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
