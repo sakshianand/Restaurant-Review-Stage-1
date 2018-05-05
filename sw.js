@@ -15,6 +15,7 @@ self.addEventListener('fetch',function(e){
 self.addEventListener('install', function(e){
 	e.waitUntil(
 		caches.open(CacheName).then(function(cache) {
+          console.log('Caching files.')
 			return cache.addAll([
 		'/',
           '/index.html',
